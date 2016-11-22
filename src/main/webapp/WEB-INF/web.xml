@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+  <display-name>CrunchifyJSPServletExample</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+
+  <servlet>
+    <servlet-name>NewRealCustomer</servlet-name>
+    <servlet-class>PresentationLayer.AddNewRealCustomerPresentation</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>NewRealCustomer</servlet-name>
+    <url-pattern>/AddNewRealCustomer</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>SearchRealCustomer</servlet-name>
+    <servlet-class>PresentationLayer.SearchRealCustomerPresentation</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchRealCustomer</servlet-name>
+    <url-pattern>/searchReal</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>EditRealCustomer</servlet-name>
+    <servlet-class>PresentationLayer.EditRealCustomerPresentation</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditRealCustomer</servlet-name>
+    <url-pattern>/editRealCustomer</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>DeleteRealCustomer</servlet-name>
+    <servlet-class>PresentationLayer.DeleteRealCustomerPresentation</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteRealCustomer</servlet-name>
+    <url-pattern>/deleteRealCustomer</url-pattern>
+  </servlet-mapping>
+
+
+
+
+  <servlet>
+    <servlet-name>NewlegalCustomer</servlet-name>
+    <servlet-class>PresentationLayer.AddLegalCustomerPresentation</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>NewlegalCustomer</servlet-name>
+    <url-pattern>/AddNewlegalCustomer</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>SearchLegalCustomer</servlet-name>
+    <servlet-class>PresentationLayer.SearchLegalCustomerPresentation</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchLegalCustomer</servlet-name>
+    <url-pattern>/searchLegal</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>EditLegalCustomer</servlet-name>
+    <servlet-class>PresentationLayer.EditLegalCustomerPresentation</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditLegalCustomer</servlet-name>
+    <url-pattern>/editLegalCustomer</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>DeleteLegalCustomer</servlet-name>
+    <servlet-class>PresentationLayer.DeleteLegalCustomerPresentation</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteLegalCustomer</servlet-name>
+    <url-pattern>/deleteLegalCustomer</url-pattern>
+  </servlet-mapping>
+
+</web-app>
