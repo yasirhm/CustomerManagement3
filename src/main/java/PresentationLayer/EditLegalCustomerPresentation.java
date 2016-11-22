@@ -130,7 +130,6 @@ public class EditLegalCustomerPresentation extends HttpServlet {
                         "</tr>\n"+
                         "</table >\n"+
                         "<br><br>" +
-                        "<a type=\"text\" href=\"index.html\"> صفحه ی اول </a><br>\n"
-                ;
+                        "<a type=\"text\" href=\"index.html\"> صفحه ی اول </a><br>\n";
     }
 }

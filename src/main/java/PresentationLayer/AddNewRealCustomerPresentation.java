@@ -20,7 +20,6 @@ public class AddNewRealCustomerPresentation extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
-        System.out.println("Do post");
         PrintWriter out = response.getWriter();
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
@@ -30,14 +29,19 @@ public class AddNewRealCustomerPresentation extends HttpServlet {
 
         RealCustomer realCustomer = new RealCustomer(firstName,lastName,fatherName,birthDay,nationalId);
         String html;
-        try {
-            realCustomer = BusinessLogic.addRealCustomerBiz(realCustomer); // ToDo : check if this is OK!!!
-            html = createHTMLString(realCustomer);
-        }catch (ConflictInDataException e){
-            //System.out.println("Error: "+e.getMessage());
-            html = showExceptionMessage(e.getMessage());
+        if (nationalId.equals("")){
+            html = showExceptionMessage("اطالاعات ورودی کافی نیست.");
+            out.println(html);
+        }else{
+            try {
+                realCustomer = BusinessLogic.addRealCustomerBiz(realCustomer); // ToDo : check if this is OK!!!
+                html = createHTMLString(realCustomer);
+            }catch (ConflictInDataException e){
+                //System.out.println("Error: "+e.getMessage());
+                html = showExceptionMessage(e.getMessage());
+            }
+            out.println(html);
         }
-        out.println(html);
     }
 
     public String createHTMLString(RealCustomer realCustomer){
@@ -87,7 +91,7 @@ public class AddNewRealCustomerPresentation extends HttpServlet {
                 "<style" +
                 "\"font-size=\"12px\" color='black'\"" + "\">" +
                 "<br><br><br><br> " +
-                "Error:. <br>"+
+                "خطا: <br>"+
                 "\t " + message + " <br> " +
                 "</font> <br><br>\n" +
                 "<a type=\"text\" href=\"index.html\"> صفحه ی اول </a><br>\n"+

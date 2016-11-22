@@ -17,7 +17,6 @@ import java.io.PrintWriter;
 public class AddLegalCustomerPresentation extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("Legall Addddddddddddddddddd");
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
@@ -25,23 +24,27 @@ public class AddLegalCustomerPresentation extends HttpServlet{
         String registrationDate = request.getParameter("registrationDate");
         String economicalCode = request.getParameter("economicalCode").replaceAll("\\s+","");
 
-        LegalCustomer legalCustomer = new LegalCustomer(name,registrationDate,economicalCode);
         String html="";
-        try {
-            //check if null returnedd
-            legalCustomer = BusinessLogic.addLegalCustomerBiz(legalCustomer);
-            System.out.println("LEGAL CUSTOMER "+legalCustomer.getEconomicalCode());
-            html = createHTMLString(legalCustomer);
-        }catch (ConflictInDataException e){
-            System.out.println("Error: "+e.getMessage());
-            html = showExceptionMessage(e.getMessage());
+        if (economicalCode.equals("") || name.equals("")){
+            html = showExceptionMessage("اطالاعات ورودی کافی نیست.");
+            out.println(html);
         }
-        out.println(html);
-        // System.out.println();
+        else{
+            LegalCustomer legalCustomer = new LegalCustomer(name,registrationDate,economicalCode);
+
+            try {
+                //check if null returnedd
+                legalCustomer = BusinessLogic.addLegalCustomerBiz(legalCustomer);
+                html = createHTMLString(legalCustomer);
+            }catch (ConflictInDataException e){
+                System.out.println(" خطا : "+e.getMessage());
+                html = showExceptionMessage(e.getMessage());
+            }
+            out.println(html);
+        }
     }
 
     public String createHTMLString(LegalCustomer legalCustomer){
-        System.out.println("Creat HTMLLL");
         return "<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" +" +
                 "http://www.w3.org/TR/html4/loose.dtd\">\n" +
                 "<html charset=UTF-8\" lang=\"fa\" dir=\"rtl\"> \n" +
@@ -88,7 +91,7 @@ public class AddLegalCustomerPresentation extends HttpServlet{
                         "<style" +
                         "\"font-size=\"12px\" color='black'\"" + "\">" +
                         "<br><br><br><br> " +
-                        "Error:. <br>"+
+                        "خطا: <br>"+
                         "\t " + message + " <br> " +
                         "</font> <br><br>\n" +
                         "<a type=\"text\" href=\"index.html\"> صفحه ی اول </a><br>\n"+

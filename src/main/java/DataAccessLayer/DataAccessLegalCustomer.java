@@ -12,7 +12,6 @@ import static java.lang.Integer.parseInt;
  */
 public class DataAccessLegalCustomer {
     private static Random random = new Random();
-   // private static LegalCustomer legalCustomer;
 
     public static boolean checkRedundantData(String economicalCode) {
         if (null == getCustomerById(economicalCode, "economicalCode")) {
@@ -203,34 +202,5 @@ public class DataAccessLegalCustomer {
             }
         }
         return legalCustomer ;
-    }
-
-    public static boolean deleteLegalCustomer(LegalCustomer legalCustomer) {
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
-        try {
-            connection = ConnectionConfiguration.getConnection();
-            preparedStatement = connection.prepareStatement("DELETE FROM legalcustomer WHERE CUSTOMER_NUMBER = ?");
-            preparedStatement.setInt(1, legalCustomer.getCustomerNumber());
-            preparedStatement.executeUpdate();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (preparedStatement != null) {
-                try {
-                    preparedStatement.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (connection != null) {
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        return true;
     }
 }

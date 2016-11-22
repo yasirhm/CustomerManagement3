@@ -11,7 +11,6 @@ import static java.lang.Integer.parseInt;
  * Created by Yasi on 11/8/2016.
  */
 public class DataAccessRealCustomer {
-    //private static HashMap<Integer, RealCustomer> realCustomers = new HashMap<Integer, RealCustomer>();
     private static Random random = new Random();
 
     public static boolean checkRedundantData(String nationalId) {
@@ -44,18 +43,9 @@ public class DataAccessRealCustomer {
         search(realCustomers, realCustomer);
         return realCustomers;
     }
-/*
-    public static void printOut(String id) {
-        System.out.println("We are HEREEEE...Seee Us");
-        for (Integer number : realCustomers.keySet()) {
-            String key = number.toString();
-            System.out.println(key + " ");
-        }
-    }*/
 
     public static void insertReal(RealCustomer realCustomer) {
         //TO DO : return just customer number and override parent insert
-
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         try {
@@ -204,8 +194,7 @@ public class DataAccessRealCustomer {
         try {
             connection = ConnectionConfiguration.getConnection();
             preparedStatement = connection.prepareStatement("UPDATE realcustomer SET " +
-                    "FIRST_NAME = ?, LAST_NAME =?, FATHER_NAME =?,BIRTH_DATE =?" +
-                    "WHERE CUSTOMER_NUMBER = ?");
+                    "FIRST_NAME = ?, LAST_NAME =?, FATHER_NAME =?,BIRTH_DATE =? WHERE CUSTOMER_NUMBER = ?");
 
             preparedStatement.setString(1, realCustomer.getFirstName());
             preparedStatement.setString(2, realCustomer.getLastName());
@@ -233,38 +222,5 @@ public class DataAccessRealCustomer {
             }
         }
         return realCustomer;
-    }
-
-    public static boolean deleteRealCustomer(RealCustomer realCustomer) {
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
-
-        try {
-            connection = ConnectionConfiguration.getConnection();
-            preparedStatement = connection.prepareStatement("DELETE FROM realcustomer WHERE CUSTOMER_NUMBER = ?");
-            preparedStatement.setInt(1, realCustomer.getCustomerNumber());
-            preparedStatement.executeUpdate();
-
-            System.out.println("DELETE FROM realcustomer WHERE id = ?");
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (preparedStatement != null) {
-                try {
-                    preparedStatement.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (connection != null) {
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        return true;
     }
 }

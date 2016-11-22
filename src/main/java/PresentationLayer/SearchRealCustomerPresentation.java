@@ -47,6 +47,7 @@ public class SearchRealCustomerPresentation extends HttpServlet {
         } catch (Exception e) {
             System.out.println("Erorr: " + e.getMessage());
             html = e.getMessage();  //TO DO: Error Page
+            showExceptionMessage(html);
         }
         out.println(html);
 
@@ -55,7 +56,7 @@ public class SearchRealCustomerPresentation extends HttpServlet {
     public String createHTMLString(List<RealCustomer> realCustomers) {
         StringBuilder table = new StringBuilder(" ");
         for (RealCustomer result : realCustomers) {
-            String row = "<TR ALIGN='CENTER'>\n" +
+            String row = "<TR ALIGN='CENTER'onmouseover=\"this.style.backgroundColor='#ffff66';\" onmouseout=\"this.style.backgroundColor='#d4e3e5';\">\n" +
                     "<td class=\"id\" style=\"display:none;\">" + result.getCustomerNumber() + "</td>" +
                     "<TD>" + result.getFirstName().toString() + " </TD>" +
                     "<TD>" + result.getLastName().toString() + "</TD>\n" +
@@ -76,6 +77,10 @@ public class SearchRealCustomerPresentation extends HttpServlet {
                 "        background-image:\n" +
                 "                url('images/background.png');\n" +
                 "}\n" +
+                "table.hovertable {\n font-family: verdana,arial,sans-serif;\n font-size:11px;\n color:#333333; \n border-width: 1px; \n border-color: #999999; \n border-collapse: collapse;}\n"+
+                "table.hovertable th {\n background-color:#c3dde0; \n border-width: 1px; \n padding: 8px; \n border-style: solid; \n border-color: #a9c6c9;}\n"+
+                "table.hovertable tr { \n background-color:#d4e3e5; \n }\n" +
+                "table.hovertable td {\n border-width: 1px; \n padding: 8px; \n border-style: solid; \n border-color: #a9c6c9;\n}"+
                 "</style>" +
                 "<head> \n" +
                 "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n" +
@@ -85,17 +90,13 @@ public class SearchRealCustomerPresentation extends HttpServlet {
                 "<style" +
                 "\"font-size=\"12px\" color='black'\"" + "\"</font>" +
                 "<br><br><br><br> " +
-                "<TABLE BORDER='5' WIDTH='50%' CELLPADDING='4' CELLSPACING='3'>\n" +
+                "<TABLE  class=\"hovertable\" BORDER='5' WIDTH='50%' CELLPADDING='4' CELLSPACING='3'>\n" +
                 "<TR>\n" +
                 "<TH COLSPAN='7'><BR><H3>نتایج جستجو مشتریان حقیقی</H3>\n" +
                 "</TH>\n" +
                 "</TR>\n" +
                 "<TR>\n" +
-                "<TH>نام</TH>\n" +
-                "<TH>نام خانوادگی</TH>\n" +
-                "<TH>نام پدر</TH>\n" +
-                "<TH>تاریخ تولد</TH>\n" +
-                "<TH>کد ملی</TH>\n" +
+                "<TH>نام</TH>\n" + "<TH>نام خانوادگی</TH>\n" + "<TH>نام پدر</TH>\n" + "<TH>تاریخ تولد</TH>\n" + "<TH>کد ملی</TH>\n" +"<TH></TH>\n<TH></TH>\n"+
                 "</TR>\n" +
                 table.toString() +
                 "</TABLE>\n" +
@@ -125,6 +126,33 @@ public class SearchRealCustomerPresentation extends HttpServlet {
                         body+
                         " <br><br>\n" +
                         "<a type=\"text\" href=\"index.html\"> صفحه ی اول </a><br>\n"+
+                        "</body> \n" +
+                        "</html>";
+    }
+
+    public String showExceptionMessage(String message){
+        return
+                "<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" +" +
+                        "http://www.w3.org/TR/html4/loose.dtd\">\n" +
+                        "<html charset=UTF-8\" lang=\"fa\" dir=\"rtl\"> \n" +
+                        "<style type=\"text/css\">\n" +
+                        "    body {\n" +
+                        "        background-image:\n" +
+                        "                url('images/background.png')};\n"+
+                        "</style>"+
+                        "<head> \n" +
+                        "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n"+
+                        "<title>DataAccessCustomer Manager</title> \n" +
+                        "</head> \n" +
+                        "<body> <div align='center'> \n" +
+                        "<style" +
+                        "\"font-size=\"12px\" color='black'\"" + "\">" +
+                        "<br><br><br><br> " +
+                        "خطا :  <br>"+
+                        "\t " + message + " <br> " +
+                        "</font> <br><br>\n" +
+                        "<a type=\"text\" href=\"index.html\"> صفحه ی اول </a><br>\n"+
+                        "</div>\n"+
                         "</body> \n" +
                         "</html>";
     }

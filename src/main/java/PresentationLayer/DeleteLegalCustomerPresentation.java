@@ -24,15 +24,15 @@ public class DeleteLegalCustomerPresentation extends HttpServlet {
         PrintWriter out = response.getWriter();
         //request.getAttribute("id");
         String customerNumber = request.getParameter("id");
-        LegalCustomer legalCustomer = BusinessLogic.getLegalCustomerBiz(customerNumber);
-        legalCustomer.setCustomerNumber(parseInt(customerNumber)); //TO Do : check that if it's already saved or not
+        //LegalCustomer legalCustomer = BusinessLogic.getLegalCustomerBiz(customerNumber);
+        //legalCustomer.setCustomerNumber(parseInt(customerNumber)); //TO Do : check that if it's already saved or not
 
         String html;
         String body;
-        if( BusinessLogic.deleteLegalCustomerBiz(legalCustomer)){
-            body =  "مشتری حقوقی با شماره مشتری " + customerNumber +"حذف شد.";
-        }
-        else  body =  "رکوردی حذف نشد. ";
+        if (BusinessLogic.deleteLegalCustomerBiz(parseInt(customerNumber))) {
+            body = "مشتری حقوقی با شماره مشتری " + customerNumber + "حذف شد.";
+        } else
+            body = "رکوردی حذف نشد. ";
 
         html = createHTMLString(body);
         out.println(html);
@@ -55,9 +55,9 @@ public class DeleteLegalCustomerPresentation extends HttpServlet {
                         "</head> \n" +
                         "<body align='center'>\n" +
                         " <br><br>\n" + " <br><br>\n" +
-                        body+
+                        body +
                         " <br><br>\n" +
-                        "<a type=\"text\" href=\"index.html\"> صفحه ی اول </a><br>\n"+
+                        "<a type=\"text\" href=\"index.html\"> صفحه ی اول </a><br>\n" +
                         "</body> \n" +
                         "</html>";
 

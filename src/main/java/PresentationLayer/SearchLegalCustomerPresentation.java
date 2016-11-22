@@ -23,7 +23,6 @@ public class SearchLegalCustomerPresentation extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
-        System.out.println("Legallll searchhhhhh");
         request.setCharacterEncoding("UTF-8");
         String name = request.getParameter("name");
         //String registrationDate = request.getParameter("registrationDate");
@@ -33,11 +32,9 @@ public class SearchLegalCustomerPresentation extends HttpServlet {
 
         if (!customerNumber.equals(""))
             legalCustomer.setCustomerNumber(parseInt(customerNumber));
-
         List<LegalCustomer> legalCustomerList = new ArrayList<LegalCustomer>();
         String html;
         String body;
-        System.out.println("Searchinnng legall");
         try {
             legalCustomerList = BusinessLogic.searchLegalCustomerBiz(legalCustomer);
             System.out.println("result from search : " );
@@ -58,7 +55,7 @@ public class SearchLegalCustomerPresentation extends HttpServlet {
         StringBuilder table = new StringBuilder(" ");
         for (LegalCustomer result : legalCustomerList) {
             System.out.println("table : "+result.getName().toString() );
-            String row = "<TR ALIGN='CENTER'>\n" +
+            String row = "<TR ALIGN='CENTER'onmouseover=\"this.style.backgroundColor='#ffff66';\" onmouseout=\"this.style.backgroundColor='#d4e3e5';\">\n" +
                     "<td class=\"id\" style=\"display:none;\">" + result.getCustomerNumber() + "</td>" +
                     "<TD>" + result.getName().toString() + " </TD>" +
                     "<TD>" + result.getRegistrationDate().toString() + "</TD>\n" +
@@ -77,6 +74,10 @@ public class SearchLegalCustomerPresentation extends HttpServlet {
                 "        background-image:\n" +
                 "                url('images/background.png');\n" +
                 "}\n" +
+                "table.hovertable {\n font-family: verdana,arial,sans-serif;\n font-size:11px;\n color:#333333; \n border-width: 1px; \n border-color: #999999; \n border-collapse: collapse;}\n"+
+                "table.hovertable th {\n background-color:#c3dde0; \n border-width: 1px; \n padding: 8px; \n border-style: solid; \n border-color: #a9c6c9;}\n"+
+                "table.hovertable tr { \n background-color:#d4e3e5; \n }\n" +
+                "table.hovertable td {\n border-width: 1px; \n padding: 8px; \n border-style: solid; \n border-color: #a9c6c9;\n}"+
                 "</style>" +
                 "<head> \n" +
                 "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n" +
@@ -86,16 +87,12 @@ public class SearchLegalCustomerPresentation extends HttpServlet {
                 "<style" +
                 "\"font-size=\"12px\" color='black'\"" + "\"</font>" +
                 "<br><br><br><br> " +
-                "<TABLE BORDER='5' WIDTH='50%' CELLPADDING='4' CELLSPACING='3'>\n" +
+                "<TABLE class=\"hovertable\" BORDER='5' WIDTH='50%' CELLPADDING='4' CELLSPACING='3'>\n" +
                 "<TR>\n" +
-                "<TH COLSPAN='7'><BR><H3>نتایج جستجو مشتریان حقوقی</H3>\n" +
-                "</TH>\n" +
+                "<TH COLSPAN='7'><BR><H3>نتایج جستجو مشتریان حقوقی</H3>\n" + "</TH>\n" +
                 "</TR>\n" +
                 "<TR>\n" +
-                "<TH>نام</TH>\n" +
-                "<TH>تاریخ ثبت</TH>\n" +
-                "<TH>کد اقتصادی</TH>\n" +
-                "<TH>شماره مشتری</TH>\n" +
+                "<TH>نام</TH>\n" + "<TH>تاریخ ثبت</TH>\n" + "<TH>کد اقتصادی</TH>\n" + "<TH>شماره مشتری</TH>\n"+"<TH></TH>\n<TH></TH>\n"+
                 "</TR>\n" +
                 table.toString() +
                 "</TABLE>\n" +
@@ -124,7 +121,7 @@ public class SearchLegalCustomerPresentation extends HttpServlet {
                         "<style" +
                         "\"font-size=\"12px\" color='black'\"" + "\">" +
                         "<br><br><br><br> " +
-                        "Error:. <br>"+
+                        "خطا :  <br>"+
                         "\t " + message + " <br> " +
                         "</font> <br><br>\n" +
                         "<a type=\"text\" href=\"index.html\"> صفحه ی اول </a><br>\n"+

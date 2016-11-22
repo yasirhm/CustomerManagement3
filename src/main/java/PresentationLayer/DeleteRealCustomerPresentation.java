@@ -15,7 +15,7 @@ import static java.lang.Integer.parseInt;
 /**
  * Created by Yasi on 11/19/2016.
  */
-public class DeleteRealCustomerPresentation extends HttpServlet{
+public class DeleteRealCustomerPresentation extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -24,15 +24,15 @@ public class DeleteRealCustomerPresentation extends HttpServlet{
         PrintWriter out = response.getWriter();
         //request.getAttribute("id");
         String customerNumber = request.getParameter("id");
-        RealCustomer realCustomer = BusinessLogic.getRealCustomerBiz(customerNumber);
-        realCustomer.setCustomerNumber(parseInt(customerNumber)); //TO Do : check that if it's already saved or not
+        //RealCustomer realCustomer = BusinessLogic.getRealCustomerBiz(customerNumber);
+        //realCustomer.setCustomerNumber(parseInt(customerNumber)); //TO Do : check that if it's already saved or not
 
         String html;
         String body;
-        if( BusinessLogic.deleteRealCustomerBiz(realCustomer)){
-            body =  "مشتری حقیقی با شماره مشتری " + customerNumber +"حذف شد.";
-        }
-        else  body =  "رکوردی حذف نشد. ";
+        if (BusinessLogic.deleteRealCustomerBiz(parseInt(customerNumber))) {
+            body = "مشتری حقیقی با شماره مشتری " + customerNumber + "حذف شد.";
+        } else
+            body = "رکوردی حذف نشد. ";
 
         html = createHTMLString(body);
         out.println(html);
@@ -56,9 +56,9 @@ public class DeleteRealCustomerPresentation extends HttpServlet{
                         "<body align='center'>\n" +
                         " <br><br>\n" +
                         " <br><br>\n" +
-                        body+
+                        body +
                         " <br><br>\n" +
-                        "<a type=\"text\" href=\"index.html\"> صفحه ی اول </a><br>\n"+
+                        "<a type=\"text\" href=\"index.html\"> صفحه ی اول </a><br>\n" +
                         "</body> \n" +
                         "</html>";
 

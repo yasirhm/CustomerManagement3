@@ -25,8 +25,8 @@ public class BusinessLogic {
         return DataAccessRealCustomer.searchById(id,"customerNumber");
     }
 
-    public static boolean deleteRealCustomerBiz(RealCustomer realCustomer){
-        return DataAccessRealCustomer.deleteRealCustomer(realCustomer);
+    public static boolean deleteRealCustomerBiz(Integer customerNumber){
+        return DataAccessCustomer.deleteCustomer(customerNumber);
     }
 
     public static RealCustomer updateRealCustomerBiz(RealCustomer realCustomer) throws ConflictInDataException {
@@ -59,9 +59,8 @@ public class BusinessLogic {
         return DataAccessLegalCustomer.updateLegalCustomer(legalCustomer);
     }
 
-    public static boolean deleteLegalCustomerBiz(LegalCustomer legalCustomer){
-        DataAccessCustomer.deleteCustomer(legalCustomer.getCustomerNumber());
-        return DataAccessLegalCustomer.deleteLegalCustomer(legalCustomer);
+    public static boolean deleteLegalCustomerBiz(Integer customerNumber){
+        return DataAccessCustomer.deleteCustomer(customerNumber);
     }
 
 
