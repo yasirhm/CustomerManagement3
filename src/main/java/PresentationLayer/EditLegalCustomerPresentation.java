@@ -36,7 +36,7 @@ public class EditLegalCustomerPresentation extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
 
-        String name = request.getParameter("name").replaceAll("\\s+","");
+        String name = request.getParameter("name");
         String registrationDate = request.getParameter("registrationDate").replaceAll("\\s+","");
         String customerNumber = request.getParameter("customerNumber").replaceAll("\\s+","");
         LegalCustomer legalCustomer = new LegalCustomer(name,registrationDate,"");

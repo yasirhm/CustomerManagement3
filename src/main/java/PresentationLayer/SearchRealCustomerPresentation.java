@@ -25,8 +25,8 @@ public class SearchRealCustomerPresentation extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         request.setCharacterEncoding("UTF-8");
-        String firstName = request.getParameter("firstName").replaceAll("\\s+","");
-        String lastName = request.getParameter("lastName").replaceAll("\\s+","");
+        String firstName = request.getParameter("firstName");
+        String lastName = request.getParameter("lastName");
         String customerNumber = request.getParameter("customerNumber").replaceAll("\\s+","");
         String nationalId = request.getParameter("NationalId").replaceAll("\\s+","");
 

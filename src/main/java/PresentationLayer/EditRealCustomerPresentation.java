@@ -40,12 +40,12 @@ public class EditRealCustomerPresentation extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
 
-        String firstName = request.getParameter("firstName").replaceAll("\\s+","");
-        String lastName = request.getParameter("lastName").replaceAll("\\s+","");
-        String fatherName = request.getParameter("fatherName").replaceAll("\\s+","");
+        String firstName = request.getParameter("firstName");
+        String lastName = request.getParameter("lastName");
+        String fatherName = request.getParameter("fatherName");
         String birthDay = request.getParameter("birthDate").replaceAll("\\s+","");
-        String nationalId = request.getParameter("NationalId").replaceAll("\\s+","");
         String customerNumber = request.getParameter("customerNumber").replaceAll("\\s+","");
+        String nationalId = request.getParameter("NationalId").replaceAll("\\s+","");
 
         RealCustomer realCustomer = new RealCustomer(firstName,lastName,fatherName,birthDay,nationalId);
         realCustomer.setCustomerNumber(parseInt(customerNumber));
@@ -77,9 +77,10 @@ public class EditRealCustomerPresentation extends HttpServlet {
                         "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n" +
                         "<title>Edit RealCustomer</title> \n" +
                         "</head> \n" +
-                        "<body align='center'>\n" +
+                        "<body>\n" +
+                        "<div align='center' >\n"+
                         body+
-                        "</body> \n" +
+                        "</div>\n </body> \n" +
                         "</html>";
 
     }
@@ -113,13 +114,9 @@ public class EditRealCustomerPresentation extends HttpServlet {
                         "<input name = \"birthDate\" type = \"text\" value='"+realCustomer.getBirthDate()+
                         "' placeholder="+realCustomer.getBirthDate()+">"+
                         "</td >\n"+
-                       /* "<td >\n"+
-                        "<input name = \"NationalId\" type = \"text\" value='"+realCustomer.getNationalId()+
-                        "' placeholder="+realCustomer.getNationalId()+">"+
-                        "</td >\n"+*/
-                        "<td >\n <input value = \"ویرایش\" type = \"submit\"  / > </td >\n"+
-                        "<td style=\"display:none;\">\n <input name='customerNumber' value='"+realCustomer.getCustomerNumber()+
-                        "' ></td >\n"+
+                        "<td >\n <input value = \"ثبت\" type = \"submit\"  / > </td >\n"+
+                        "<td style=\"display:none;\">\n <input name='customerNumber' value='"+realCustomer.getCustomerNumber()+"' ></td >\n"+
+                        "<td style=\"display:none;\">\n <input name='NationalId' value='"+realCustomer.getNationalId()+"'></td >\n"+
                         "</tr>\n"+
                         "</table >\n"+
                         "<br><br>" +
