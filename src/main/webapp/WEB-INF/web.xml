@@ -3,7 +3,6 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
-  <display-name>CrunchifyJSPServletExample</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
@@ -15,7 +14,7 @@
 
   <servlet>
     <servlet-name>NewRealCustomer</servlet-name>
-    <servlet-class>PresentationLayer.AddNewRealCustomerPresentation</servlet-class>
+    <servlet-class>Presentation.RealCustomer.AddNewRealCustomerPresentation</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>NewRealCustomer</servlet-name>
@@ -24,7 +23,7 @@
 
   <servlet>
     <servlet-name>SearchRealCustomer</servlet-name>
-    <servlet-class>PresentationLayer.SearchRealCustomerPresentation</servlet-class>
+    <servlet-class>Presentation.RealCustomer.SearchRealCustomerPresentation</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>SearchRealCustomer</servlet-name>
@@ -33,7 +32,7 @@
 
   <servlet>
     <servlet-name>EditRealCustomer</servlet-name>
-    <servlet-class>PresentationLayer.EditRealCustomerPresentation</servlet-class>
+    <servlet-class>Presentation.RealCustomer.EditRealCustomerPresentation</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>EditRealCustomer</servlet-name>
@@ -42,7 +41,7 @@
 
   <servlet>
     <servlet-name>DeleteRealCustomer</servlet-name>
-    <servlet-class>PresentationLayer.DeleteRealCustomerPresentation</servlet-class>
+    <servlet-class>Presentation.RealCustomer.DeleteRealCustomerPresentation</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>DeleteRealCustomer</servlet-name>
@@ -54,7 +53,7 @@
 
   <servlet>
     <servlet-name>NewlegalCustomer</servlet-name>
-    <servlet-class>PresentationLayer.AddLegalCustomerPresentation</servlet-class>
+    <servlet-class>Presentation.LegalCustomer.AddLegalCustomerPresentation</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>NewlegalCustomer</servlet-name>
@@ -63,7 +62,7 @@
 
   <servlet>
     <servlet-name>SearchLegalCustomer</servlet-name>
-    <servlet-class>PresentationLayer.SearchLegalCustomerPresentation</servlet-class>
+    <servlet-class>Presentation.LegalCustomer.SearchLegalCustomerPresentation</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>SearchLegalCustomer</servlet-name>
@@ -72,7 +71,7 @@
 
   <servlet>
     <servlet-name>EditLegalCustomer</servlet-name>
-    <servlet-class>PresentationLayer.EditLegalCustomerPresentation</servlet-class>
+    <servlet-class>Presentation.LegalCustomer.EditLegalCustomerPresentation</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>EditLegalCustomer</servlet-name>
@@ -81,7 +80,7 @@
 
   <servlet>
     <servlet-name>DeleteLegalCustomer</servlet-name>
-    <servlet-class>PresentationLayer.DeleteLegalCustomerPresentation</servlet-class>
+    <servlet-class>Presentation.LegalCustomer.DeleteLegalCustomerPresentation</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>DeleteLegalCustomer</servlet-name>

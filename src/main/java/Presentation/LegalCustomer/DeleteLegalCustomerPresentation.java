@@ -1,7 +1,7 @@
-package PresentationLayer;
+package Presentation.LegalCustomer;
 
 import BusinessLogic.BusinessLogic;
-import DataAccessLayer.LegalCustomer;
+import Presentation.Presentation;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

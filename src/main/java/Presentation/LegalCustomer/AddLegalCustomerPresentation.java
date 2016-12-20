@@ -1,8 +1,9 @@
-package PresentationLayer;
+package Presentation.LegalCustomer;
 
 import BusinessLogic.BusinessLogic;
-import DataAccessLayer.LegalCustomer;
+import DataAccess.LegalCustomer;
 import BusinessLogic.ConflictInDataException;
+import Presentation.Presentation;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

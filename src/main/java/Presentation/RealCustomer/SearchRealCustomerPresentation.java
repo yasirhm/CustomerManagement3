@@ -1,7 +1,8 @@
-package PresentationLayer;
+package Presentation.RealCustomer;
 
 import BusinessLogic.BusinessLogic;
-import DataAccessLayer.RealCustomer;
+import DataAccess.RealCustomer;
+import Presentation.Presentation;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

@@ -1,4 +1,4 @@
-package DataAccessLayer;
+package DataAccess;
 
 /**
  * Created by Yasi on 11/8/2016.
@@ -15,10 +15,6 @@ public class LegalCustomer extends DataAccessCustomer {
         this.registrationDate = registrationDate;
         this.economicalCode = economicalCode;
     }
-   /* public void setCustomerNumber(Integer customerNumber) {
-        this.customerNumber = customerNumber;
-    }
-*/
     public String getName() {
         return name;
     }

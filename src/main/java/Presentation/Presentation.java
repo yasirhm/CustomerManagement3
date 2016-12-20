@@ -1,6 +1,5 @@
-package PresentationLayer;
+package Presentation;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +16,7 @@ public class Presentation extends HttpServlet {
         String type = request.getParameter("type");
         PrintWriter out = response.getWriter();
         String newManager;
-        if(type.equals("DataAccessLayer.RealCustomer")){
+        if(type.equals("DataAccess.RealCustomer")){
             newManager = responseString("realCustomerManager",type);
         } else{
             newManager = responseString("legalCustomerManager",type);

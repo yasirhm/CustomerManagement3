@@ -1,4 +1,4 @@
-package DataAccessLayer;
+package DataAccess;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -56,7 +56,6 @@ public abstract class DataAccessCustomer {
         PreparedStatement preparedStatement = null;
         Integer lastCustomer = 1000;
         try {
-            System.out.println("GET LAST....");
             connection = ConnectionConfiguration.getConnection();
             preparedStatement = connection.prepareStatement("select CUSTOMER_NUMBER from customers where id=(select max(id) from customers)");
             ResultSet resultSet = preparedStatement.executeQuery();

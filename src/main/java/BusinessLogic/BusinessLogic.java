@@ -1,6 +1,6 @@
 package BusinessLogic;
 
-import DataAccessLayer.*;
+import DataAccess.*;
 
 import java.util.List;
 
@@ -11,18 +11,18 @@ public class BusinessLogic {
 
     //*****REAL DataAccessCustomer*******//
     public static RealCustomer addRealCustomerBiz(RealCustomer realCustomer) throws ConflictInDataException {
-        if(DataAccessRealCustomer.checkRedundantData(realCustomer.getNationalId())){
-            return DataAccessRealCustomer.addRealCustomerDataAccess(realCustomer);
+        if(RealCustomerCRUD.checkRedundantData(realCustomer.getNationalId())){
+            return RealCustomerCRUD.addRealCustomerDataAccess(realCustomer);
         }
         else throw new ConflictInDataException("رکوردی با کد ملی مشابه وجود دارد.");
     }
 
     public static List<RealCustomer> searchRealCustomerBiz(RealCustomer realCustomer){
-        return DataAccessRealCustomer.searchIn(realCustomer);
+        return RealCustomerCRUD.searchIn(realCustomer);
     }
 
     public static RealCustomer getRealCustomerBiz(String id){
-        return DataAccessRealCustomer.searchById(id,"customerNumber");
+        return RealCustomerCRUD.searchById(id,"customerNumber");
     }
 
     public static boolean deleteRealCustomerBiz(Integer customerNumber){
@@ -30,10 +30,10 @@ public class BusinessLogic {
     }
 
     public static RealCustomer updateRealCustomerBiz(RealCustomer realCustomer) throws ConflictInDataException {
-        return DataAccessRealCustomer.updateRealCustomer(realCustomer);
+        return RealCustomerCRUD.updateRealCustomer(realCustomer);
        /*
-        if(DataAccessRealCustomer.checkRedundantData(realCustomer.getNationalId())){
-            return DataAccessRealCustomer.updateRealCustomer(realCustomer);
+        if(RealCustomerCRUD.checkRedundantData(realCustomer.getNationalId())){
+            return RealCustomerCRUD.updateRealCustomer(realCustomer);
         }
         else throw new ConflictInDataException("رکوردی با کد ملی مشابه وجود دارد.");
         */
@@ -41,22 +41,22 @@ public class BusinessLogic {
 
     //**LEGAL CUSTOMER***///
     public static LegalCustomer addLegalCustomerBiz(LegalCustomer legalCustomer)throws ConflictInDataException{
-        if(DataAccessLegalCustomer.checkRedundantData(legalCustomer.getEconomicalCode())){
-            return DataAccessLegalCustomer.addLegalCustomerDataAccess(legalCustomer);
+        if(LegalCustomerCRUD.checkRedundantData(legalCustomer.getEconomicalCode())){
+            return LegalCustomerCRUD.addLegalCustomerDataAccess(legalCustomer);
         }
         else throw new ConflictInDataException("رکوردی با کد اقتصادی مشابه وجود دارد.");
     }
 
     public static List<LegalCustomer> searchLegalCustomerBiz(LegalCustomer legalCustomer){
-        return DataAccessLegalCustomer.searchIn(legalCustomer);
+        return LegalCustomerCRUD.searchIn(legalCustomer);
     }
 
     public static LegalCustomer getLegalCustomerBiz(String id){
-        return DataAccessLegalCustomer.getCustomerById(id,"customerNumber");
+        return LegalCustomerCRUD.getCustomerById(id,"customerNumber");
     }
 
     public static LegalCustomer updateLegalCustomerBiz(LegalCustomer legalCustomer){
-        return DataAccessLegalCustomer.updateLegalCustomer(legalCustomer);
+        return LegalCustomerCRUD.updateLegalCustomer(legalCustomer);
     }
 
     public static boolean deleteLegalCustomerBiz(Integer customerNumber){

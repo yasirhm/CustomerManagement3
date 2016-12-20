@@ -1,4 +1,4 @@
-package DataAccessLayer;
+package DataAccess;
 
 /**
  * Created by Yasi on 11/8/2016.

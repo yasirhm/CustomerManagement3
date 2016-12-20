@@ -1,4 +1,4 @@
-package DataAccessLayer;
+package DataAccess;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import static java.lang.Integer.parseInt;
 /**
  * Created by Yasi on 11/21/2016.
  */
-public class DataAccessLegalCustomer {
+public class LegalCustomerCRUD {
     private static Random random = new Random();
 
     public static boolean checkRedundantData(String economicalCode) {
@@ -67,7 +67,7 @@ public class DataAccessLegalCustomer {
     }
 
     public static LegalCustomer addLegalCustomerDataAccess(LegalCustomer legalCustomer) {
-      //  DataAccessLegalCustomer.legalCustomer = legalCustomer;
+      //  LegalCustomerCRUD.legalCustomer = legalCustomer;
         Integer customerNumber = legalCustomer.insert();
         if (customerNumber != null){
             legalCustomer.setCustomerNumber(customerNumber);
